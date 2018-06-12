@@ -15,9 +15,9 @@ def main(args=None):
     msg = String()    
 
     while rclpy.ok():
-        rcv = port.read(17)
-        print("Read: " + repr(rcv)[1:])
-        msg.data = repr(rcv)[1:]
+        rcv = port.readline()
+        print("Read: " + repr(rcv)[2:-3])
+        msg.data = repr(rcv)[2:-3]
         node.get_logger().info("%s" % msg.data)
         publisher.publish(msg)
         time.sleep(0.1)
