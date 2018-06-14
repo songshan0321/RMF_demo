@@ -17,11 +17,11 @@ int main(void)
     {
         btn_state_1 = digitalRead(BTN_PIN_1);
         if(btn_state_1 == 1){
-            msg = 0;
+            msg = 1;
             digitalWrite(LED_PIN, HIGH) ;
         }
         else{
-            msg = 1;
+            msg = 0;
             digitalWrite(LED_PIN, LOW) ;
         }
         printf("%d\n",msg);
