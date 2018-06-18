@@ -1,49 +1,57 @@
+#!/usr/bin/env python
 import time
 import RPi.GPIO as GPIO
+GPIO.setwarnings(False)
 
 # ROS library
 import rclpy
 from std_msgs.msg import String
+from rmf_msgs.msg import CallButtonState
 
 # GPIO declaration
 LED_PIN = 7
 BTN_PIN_1 = 12
-BTN_PIN_2 = 16
-BTN_PIN_3 = 18
+# BTN_PIN_2 = 16
+# BTN_PIN_3 = 18
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(LED_PIN,GPIO.OUT)
 GPIO.setup(BTN_PIN_1,GPIO.IN)
-GPIO.setup(BTN_PIN_2,GPIO.IN)
-GPIO.setup(BTN_PIN_3,GPIO.IN)
+# GPIO.setup(BTN_PIN_2,GPIO.IN)
+# GPIO.setup(BTN_PIN_3,GPIO.IN)
 
 btn_state_1 = False
-btn_state_2 = False
-btn_state_3 = False
+# btn_state_2 = False
+# btn_state_3 = False
 bed_dict = {12:"B01", 16:"B02", 18:"B03"}
-logic_dict = {True:"S1", False:"S0"}
 
-def led_update():
-	if btn_state_1 == True or btn_state_2 == True or btn_state_3 == True:
-		GPIO.output(LED_PIN,True)
-	else:
-		GPIO.output(LED_PIN,False)
+# def led_update():
+#     # if btn_state_1 == True or btn_state_2 == True or btn_state_3 == True:
+#     if btn_state_1 == True:
+#         GPIO.output(LED_PIN,GPIO.HIGH)
+#     else:
+#         GPIO.output(LED_PIN,GPIO.LOW)
 
 def main(args=None):
     # ROS init
     rclpy.init(args=args)
     node = rclpy.create_node('button_node')
-    publisher = node.create_publisher(String, 'button')
-    msg = String()    
+    publisher = node.create_publisher(CallButtonState, 'button')
+    msg = CallButtonState()
 
     while rclpy.ok():
         btn_state_1 = GPIO.input(BTN_PIN_1)
-        btn_state_2 = GPIO.input(BTN_PIN_2)
-        btn_state_3 = GPIO.input(BTN_PIN_3)
-        
-        msg.data = bed_dict[BTN_PIN_1] + logic_dict[btn_state_1] + " " + bed_dict[BTN_PIN_2] + logic_dict[btn_state_2] + " " + bed_dict[BTN_PIN_3] + logic_dict[btn_state_3]
-        print("msg: " + msg.data)
-        node.get_logger().info("%s" % msg.data)
+        # btn_state_2 = GPIO.input(BTN_PIN_2)
+        # btn_state_3 = GPIO.input(BTN_PIN_3)
+
+        msg.id = bed_dict[BTN_PIN_1]
+        msg.pressed = bool(btn_state_1)
+        print("msg: " + msg.id + ", " +  str(msg.pressed))
+        node.get_logger().info("%s,%s" % (msg.id,msg.pressed))
         publisher.publish(msg)
+        if btn_state_1 == True:
+            GPIO.output(LED_PIN,GPIO.HIGH)
+        else:
+            GPIO.output(LED_PIN,GPIO.LOW)
         time.sleep(0.1)
 
     node.destroy_node()
