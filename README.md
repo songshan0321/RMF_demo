@@ -1,14 +1,16 @@
 # raspi version
 #ssh into raspi
 
-ssh songshan@10.12.60.1
+ssh songshan@192.168.1.85
 
 #On Raspi
+cd ~/ros2_ws/src && git clone https://github.com/songshan0321/RMF_demo.git
 
 cd ~/ros2_ws && . install/local_setup.bash
 
-cd ~/Downloads/RMF_demo && python3 ./one_button.py
+cd ~/ros2_ws && ament build --symlink-install --only-packages one_button
 
+one_button
 
 
 
