@@ -4,11 +4,13 @@
 ssh songshan@192.168.1.85
 
 #On Raspi
-cd ~/ros2_ws/src && git clone https://github.com/songshan0321/RMF_demo.git
+cd ~/rmf/src && git clone https://github.com/songshan0321/RMF_demo.git
 
-cd ~/ros2_ws && . install/local_setup.bash
+cd ~/rmf_ws && . install/setup.bash
 
-cd ~/ros2_ws && ament build --symlink-install --only-packages one_button
+export ROS_DOMAIN_ID=1
+
+cd ~/rmf_ws && ament build --symlink-install --only-packages one_button
 
 one_button
 
