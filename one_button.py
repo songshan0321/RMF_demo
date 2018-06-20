@@ -22,7 +22,7 @@ GPIO.setup(BTN_PIN_1,GPIO.IN)
 btn_state_1 = False
 # btn_state_2 = False
 # btn_state_3 = False
-bed_dict = {12:"B01", 16:"B02", 18:"B03"}
+bed_dict = {12:"bed_0_button", 16:"bed_1_button", 18:"bed_2_button"}
 
 # def led_update():
 #     # if btn_state_1 == True or btn_state_2 == True or btn_state_3 == True:
