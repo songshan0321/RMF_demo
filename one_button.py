@@ -35,7 +35,7 @@ def main(args=None):
     # ROS init
     rclpy.init(args=args)
     node = rclpy.create_node('button_node')
-    publisher = node.create_publisher(CallButtonState, 'button')
+    publisher = node.create_publisher(CallButtonState, 'call_button_state')
     msg = CallButtonState()
 
     while rclpy.ok():
