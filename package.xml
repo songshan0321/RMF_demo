@@ -4,7 +4,7 @@
   <name>one_button</name>
   <version>0.0.0</version>
   <description>Call button</description>
-  <maintainer email="mquigley@openrobotics.org">Morgan Quigley</maintainer>
+  <maintainer email="songshan_you@hotmail.com">Songshan</maintainer>
   <license>Apache License 2.0</license>
 
   <exec_depend>rclpy</exec_depend>
