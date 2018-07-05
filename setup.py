@@ -1,13 +1,13 @@
 from setuptools import setup
 
-package_name = 'one_button'
+package_name = 'multi_button'
 
 setup(
     name=package_name,
     version='0.0.0',
     packages=[],
     py_modules=[
-        'one_button'
+        'multi_button'
         ],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -31,7 +31,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'one_button = one_button:main'
+            'multi_button = multi_button:main'
         ],
     },
 )
