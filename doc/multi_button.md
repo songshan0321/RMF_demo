@@ -1,7 +1,7 @@
 # Demo: Call Button with raspi and arduino IO pins
 
 ### Step1: Upload code to arduino
-[Arduino code](/multi_button/button_control/button_control.io) 
+[Arduino code](/multi_button/button_control/button_control.ino) 
 
 ### Step2: start a button hub
 On Raspi
