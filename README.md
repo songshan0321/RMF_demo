@@ -1,28 +1,7 @@
-# raspi-arduino version
-#run buttons_control.io on arduino
-#On raspi
+# RMF Demo 1
 
-cd ~/ && git clone https://github.com/songshan0321/RMF_demo.git
-. ~/rmf/build/ros2/install/setup.bash
-cd ~/rmf/build/ros2 && ament build --symlink-install --only-packages one_button
-sudo chmod 777 /dev/ttyACM0
-
-multi_button
-
-
-# raspi version
-#On Raspi
-cd ~/rmf/src && git clone https://github.com/songshan0321/RMF_demo.git
-cd ~/rmf_ws && . install/setup.bash
-cd ~/rmf_ws && ament build --symlink-install --only-packages one_button
-
-one_button
-
-# nanopi and comp version, connect nanopi to comp using USB to UART converter
-
-#On nanoPi
-cd ~/demo && python3 ./serialButton.py
-
-#On COM
-cd ~/ros2_ws && . install/local_setup.bash
-cd ~/Downloads/RMF_demo && python3 ./button_pub.py
+  * [Installation](doc/INSTALL.md)
+  * Demo 1 Components
+    * [Call Button with raspi gpio](doc/one_button.md)
+    * [Call Button with raspi and arduino IO pins](doc/multi_button.md)
+    * [Call Button to trigger ROS 1 linorobot](doc/button_lino.md)(In Progress, PLS IGNORE THIS)
