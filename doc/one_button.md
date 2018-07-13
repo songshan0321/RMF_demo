@@ -2,7 +2,8 @@
 ### Step1: start one_button
 On raspi
 Run one_button package. 
+```bash
+$ . ~/rmf/build/ros2/install/setup.bash
+$ one_button
 ```
-. ~/rmf/build/ros2/install/setup.bash
-one_button
-```
+
